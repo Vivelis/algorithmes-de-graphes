@@ -33,12 +33,12 @@ def recherche_chemin(Graphe, depart, arrivee,Vus = None):
 	"""entrée : Graphe = liste d'adjacence, depart = sommet de départ, arrivee = sommet d'arrivée
 		retourne : Liste de sommets correspondant au chemin entre depart et arrivee"""
 	assert depart in Graphe and arrivee in Graphe, "un sommet donné n'appartient pas au graphe"
-	if Vus is None:
+	if Vus is None:		# initialise liste sommets vus
 		Vus = []
 	voisins = Graphe[depart]		# on récupère la liste des voisins
-	Vus.append(depart)		# marquer le sommet depart
-	for t in voisins:	# POUR TOUT sommet t voisin du sommet depart
-		if t == arrivee:
+	Vus.append(depart)				# marquer le sommet depart
+	for t in voisins:				# POUR TOUT sommet t voisin du sommet depart
+		if t == arrivee:			# cas où l'on trouve l'arrivée
 			Vus.append(t)
 			return Vus
 		elif t not in Vus :    		# SI t n'est pas marqué ALORS
