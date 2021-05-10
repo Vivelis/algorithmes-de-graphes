@@ -29,6 +29,43 @@ print("---------------------------------------")
 print(plus_court_chemin(Graphe_villes,"Nice","Toulouse"))
 print("-----------------------------------")
 
+
+def dijk(G, s):
+	"""
+--------------------------------------------------------------------------------
+    Dijkstra's shortest path Algorithm
+        Args :  G - Dictionary of edges
+                s - Starting Node
+        Vars :  dist - Dictionary storing shortest distance from s to every other node
+                known - Set of knows nodes
+                path - Preceding node in path
+--------------------------------------------------------------------------------
+"""
+    dist, known, path = {s: 0}, set(), {s: 0}
+    while True:
+        if len(known) == len(G) - 1:
+            break
+        mini = 100000
+        for i in dist:
+            if i not in known and dist[i] < mini:
+                mini = dist[i]
+                u = i
+        known.add(u)
+        for v in G[u]:
+            if v[0] not in known:
+                if dist[u] + v[1] < dist.get(v[0], 100000):
+                    dist[v[0]] = dist[u] + v[1]
+                    path[v[0]] = u
+    for i in dist:
+        if i != s:
+            print(dist[i])
+
+print("Chemin le plus court par Dijkstra")
+print("---------------------------------------")
+print(dijk(Graphe_villes,"Nice","Toulouse"))
+print("-----------------------------------")
+
+
 def recherche_chemin(Graphe, depart, arrivee,Vus = None):
 	"""entrée : Graphe = liste d'adjacence, depart = sommet de départ, arrivee = sommet d'arrivée
 		retourne : Liste de sommets correspondant au chemin entre depart et arrivee"""
