@@ -51,7 +51,7 @@ print(recherche_chemin(Graphe_villes,"Nice","Toulouse"))
 print("-----------------------------------")
 
 
-def recherche_tous_chemins(Graphe, depart, arrivee)
+def recherche_tous_chemins(Graphe, depart, arrivee) :
 	"""entrée : Graphe = liste d'adjacence, depart = sommet de départ, arrivee = sommet d'arrivée
 		retourne : Liste de liste de sommets correspondant aux chemin entre depart et arrivee"""
 	for i in Graphe:
